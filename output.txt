@@ -1,0 +1,66 @@
+SQL> SPOOL output.txt;
+
+SQL> SELECT COUNT(*) FROM sales_data;
+
+  COUNT(*)
+----------
+        55
+
+
+SQL> SELECT SUM(quantity * price) AS total_sales_revenue FROM sales_data;
+
+TOTAL_SALES_REVENUE
+-------------------
+           3551150
+
+
+SQL> SELECT product, SUM(quantity) AS total_quantity
+  2  FROM sales_data
+  3  GROUP BY product
+  4  ORDER BY total_quantity DESC
+  5  FETCH FIRST 1 ROW ONLY;
+
+PRODUCT        TOTAL_QUANTITY
+-------------- --------------
+Headphones                 82
+
+
+SQL> SELECT city, SUM(quantity * price) AS city_revenue
+  2  FROM sales_data
+  3  GROUP BY city;
+
+CITY     CITY_REVENUE
+-------- -------------
+Pune           1196550
+Mumbai         1214300
+Nagpur         1140300
+
+
+SQL> SELECT category, SUM(quantity * price) AS category_revenue
+  2  FROM sales_data
+  3  GROUP BY category;
+
+CATEGORY        CATEGORY_REVENUE
+--------------- ----------------
+Electronics             3206000
+Accessories              345150
+
+
+SQL> SELECT *
+  2  FROM sales_data
+  3  ORDER BY (quantity * price) DESC
+  4  FETCH FIRST 1 ROW ONLY;
+
+ORDER_ID ORDER_DATE  CITY    PRODUCT CATEGORY     QUANTITY     PRICE
+-------- ----------- ------- ------- ------------ ---------- ----------
+    1052 01-MAR-25   Mumbai  Laptop  Electronics          3      50000
+
+
+SQL> SELECT AVG(price) AS average_product_price FROM sales_data;
+
+AVERAGE_PRODUCT_PRICE
+---------------------
+                23382
+
+
+SQL> SPOOL OFF;
