@@ -95,11 +95,4 @@ This project uses **SQL, Excel, and Python** to analyze retail sales data and ge
 
 ---
 
-If you want, I can also add:
 
-* 📁 Project folder structure
-* 🧪 Sample SQL queries
-* 🐍 Python code snippets
-* 📊 Dashboard screenshots section
-
-Just tell me 👍
